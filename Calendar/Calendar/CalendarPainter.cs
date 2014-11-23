@@ -19,6 +19,12 @@ namespace Calendar
         private const int Height = 50;
         private const int SelectionWidth = 45;
         private const int SelectionHeight = 40;
+        private readonly Font textFont = new Font("Arial", 20);
+        private readonly Pen textPen = Pens.Black;
+        private readonly Brush textBrush = new SolidBrush(Color.Black);
+        private readonly Pen boundaryPen = Pens.Black;
+        private readonly Color holidayColor = Color.Red;
+        private readonly Color weekdayColor = Color.Blue;
 
         private DateTime currentDate;
         public CalendarPainter(DateTime currentDate)
@@ -42,8 +48,8 @@ namespace Calendar
         {
             var month = Months.GetNameMonthFromCode(currentDate.Month);
             var header = string.Format("{0} {1}", month, currentDate.Year);
-            graphics.DrawRectangle(Pens.Black, 0, StartY - Height, 7*Width, Height);
-            graphics.DrawString(header, new Font("Arial", 20), new SolidBrush(Color.Black), 0, StartY - Height);
+            graphics.DrawRectangle(textPen, 0, StartY - Height, 7*Width, Height);
+            graphics.DrawString(header, textFont, textBrush, 0, StartY - Height);
         }
 
         private void DrawCalendarCells(List<CalendarCell> cells, Graphics graphics )
@@ -52,12 +58,12 @@ namespace Calendar
             {
                 var cell = cells[i];
                 if (cell.WithBoundary)
-                    graphics.DrawRectangle(Pens.Black, (i % 7) * StartX, StartY + (i / 7) * Height, Width, Height);
+                    graphics.DrawRectangle(boundaryPen, (i % 7) * StartX, StartY + (i / 7) * Height, Width, Height);
 
                 if (cell.IsSelected)
                     graphics.FillEllipse(new SolidBrush(selectionColor), (i % 7) * StartX, StartY + (i / 7) * Height, SelectionWidth, SelectionHeight);
 
-                graphics.DrawString(cell.Text, new Font("Arial", 20), new SolidBrush(cell.ForeColor), (i % 7) * StartX, StartY + (i / 7) * Height);
+                graphics.DrawString(cell.Text, textFont, new SolidBrush(cell.ForeColor), (i % 7) * StartX, StartY + (i / 7) * Height);
             }
         }
 
@@ -75,9 +81,8 @@ namespace Calendar
 
         private CalendarCell GetCalendarCell(DateTime day)
         {
-            var foreColor = day.DayOfWeek == DayOfWeek.Saturday || day.DayOfWeek == DayOfWeek.Sunday
-                ? Color.Red
-                : Color.Blue;
+            var foreColor = day.DayOfWeek == DayOfWeek.Saturday || day.DayOfWeek == DayOfWeek.Sunday ? 
+                            holidayColor : weekdayColor;
 
             return new CalendarCell(day.Day.ToString(), false, day.Day == currentDate.Day, foreColor);
         }
