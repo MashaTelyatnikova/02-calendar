@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace Calendar
 {
-    public static class CalendarPainter
+    public class CalendarPainter
     {
         private const int CalendarWidth = 800;
         private const int CalendarHeight = 500;
-        private static readonly Color CalendarBackColor = Color.Lavender;
-        private static readonly Color SelectionColor = Color.HotPink;
+        private readonly Color calendarBackColor = Color.Lavender;
+        private readonly Color selectionColor = Color.HotPink;
         private const int StartX = 100;
         private const int StartY = 150;
         private const int Width = 100;
@@ -20,43 +20,66 @@ namespace Calendar
         private const int SelectionWidth = 45;
         private const int SelectionHeight = 40;
 
-        public static Bitmap PaintFromCurrentDate(DateTime currentDate)
+        private DateTime currentDate;
+        public CalendarPainter(DateTime currentDate)
+        {
+            this.currentDate = currentDate;
+        }
+
+        public Bitmap PaintFromCurrentDate()
         {
             var calendarBitmap = new Bitmap(CalendarWidth, CalendarHeight);
             var graphics = Graphics.FromImage(calendarBitmap);
-            graphics.Clear(CalendarBackColor);
-
-            DrawCalendarCells(GetCalendarCells(currentDate), graphics);
+            graphics.Clear(calendarBackColor);
+           
+            DrawHeader(graphics);
+            DrawCalendarCells(GetCalendarCells().ToList(), graphics);
+            
             return calendarBitmap;
         }
 
-        private static void DrawCalendarCells(IEnumerable<CalendarCell> cells, Graphics graphics )
+        private void DrawHeader(Graphics graphics)
         {
-            var count = 0;
+            var month = Months.GetNameMonthFromCode(currentDate.Month);
+            var header = string.Format("{0} {1}", month, currentDate.Year);
+            graphics.DrawRectangle(Pens.Black, 0, StartY - Height, 7*Width, Height);
+            graphics.DrawString(header, new Font("Arial", 20), new SolidBrush(Color.Black), 0, StartY - Height);
+        }
 
-            foreach (var cell in cells)
+        private void DrawCalendarCells(List<CalendarCell> cells, Graphics graphics )
+        {
+            for (var i = 0; i < cells.Count(); ++i)
             {
+                var cell = cells[i];
                 if (cell.WithBoundary)
-                    graphics.DrawRectangle(Pens.Black, (count % 7) * StartX, StartY + (count / 7) * Height, Width, Height);
+                    graphics.DrawRectangle(Pens.Black, (i % 7) * StartX, StartY + (i / 7) * Height, Width, Height);
 
                 if (cell.IsSelected)
-                    graphics.FillEllipse(new SolidBrush(SelectionColor), (count % 7) * StartX, StartY + (count / 7) * Height, SelectionWidth, SelectionHeight);
+                    graphics.FillEllipse(new SolidBrush(selectionColor), (i % 7) * StartX, StartY + (i / 7) * Height, SelectionWidth, SelectionHeight);
 
-                graphics.DrawString(cell.Text, new Font("Arial", 20), new SolidBrush(cell.ForeColor), (count % 7) * StartX, StartY + (count / 7) * Height);
-                count++;
+                graphics.DrawString(cell.Text, new Font("Arial", 20), new SolidBrush(cell.ForeColor), (i % 7) * StartX, StartY + (i / 7) * Height);
             }
         }
 
-        private static IEnumerable<CalendarCell> GetCalendarCells(DateTime currentDate)
+        private IEnumerable<CalendarCell> GetCalendarCells()
         {
             var weekDays = new string[] { "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun" };
             var days = GetDays(currentDate.Year, currentDate.Month).ToList();
             var emptyCells = 7 - days.TakeWhile(i => i.DayOfWeek != DayOfWeek.Monday).Count();
 
             return weekDays.Select(weekDay => new CalendarCell(weekDay, true, false, Color.Black))
-                            .Union(Enumerable.Range(0, emptyCells).Select(i => new CalendarCell("", false, false, Color.Lavender)))
-                            .Union(Enumerable.Range(1, days.Count).Select(i => i == currentDate.Day ? new CalendarCell(i.ToString(), false, true, Color.Blue) : new CalendarCell(i.ToString(), false, false, Color.Blue)));
+                .Union(Enumerable.Range(0, emptyCells).Select(i => new CalendarCell("", false, false, Color.Lavender)))
+                .Union(days.Select(GetCalendarCell));
 
+        }
+
+        private CalendarCell GetCalendarCell(DateTime day)
+        {
+            var foreColor = day.DayOfWeek == DayOfWeek.Saturday || day.DayOfWeek == DayOfWeek.Sunday
+                ? Color.Red
+                : Color.Blue;
+
+            return new CalendarCell(day.Day.ToString(), false, day.Day == currentDate.Day, foreColor);
         }
 
         private static IEnumerable<DateTime> GetDays(int year, int month)

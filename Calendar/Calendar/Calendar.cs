@@ -24,7 +24,8 @@ namespace Calendar
 
         private void DrawCalendar(DateTime currentDate)
         {
-            ShowCalendar(CalendarPainter.PaintFromCurrentDate(currentDate));
+            var painter = new CalendarPainter(currentDate);
+            ShowCalendar(painter.PaintFromCurrentDate());
         }
 
         private void ShowCalendar(Image calendarBitmap)
