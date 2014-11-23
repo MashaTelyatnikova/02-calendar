@@ -12,11 +12,13 @@ namespace Calendar
         public string Text { get; set; }
         public bool WithBoundary { get; set; }
         public Color ForeColor { get; set; }
+        public bool IsSelected { get; set; }
 
-        public CalendarCell(string text, bool withBoundary, Color foreColor)
+        public CalendarCell(string text, bool withBoundary, bool isSelected, Color foreColor)
         {
             this.Text = text;
             this.WithBoundary = withBoundary;
+            this.IsSelected = isSelected;
             this.ForeColor = foreColor;
         }
     }

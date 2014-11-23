@@ -41,7 +41,6 @@ namespace Calendar
         public static bool IsValidFormatDate(string date)
         {
             var validFormatRegex = new Regex(@"\d{2}/\d{2}/\d{3}");
-            DateTime tmp;
 
             return validFormatRegex.IsMatch(date) && date.Length == 10;
         }
