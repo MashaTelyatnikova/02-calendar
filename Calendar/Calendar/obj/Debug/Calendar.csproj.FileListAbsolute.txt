@@ -8,3 +8,4 @@ C:\Users\1\Documents\Visual Studio 2012\Projects\02-calendar\Calendar\Calendar\o
 C:\Users\1\Documents\Visual Studio 2012\Projects\02-calendar\Calendar\Calendar\obj\Debug\Calendar.pdb
 C:\Users\1\Documents\Visual Studio 2012\Projects\02-calendar\Calendar\Calendar\bin\Debug\nunit.framework.dll
 C:\Users\1\Documents\Visual Studio 2012\Projects\02-calendar\Calendar\Calendar\bin\Debug\nunit.framework.xml
+C:\Users\1\Documents\Visual Studio 2012\Projects\02-calendar\Calendar\Calendar\obj\Debug\Calendar.Calendar.resources
