@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{EDB802E6-6B70-4B04-AF7A-6837F85F1E4B}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{B149727C-4C35-420D-BB81-19780EC42174}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Calendar_v2_</RootNamespace>
-    <AssemblyName>Calendar%28v2%29</AssemblyName>
+    <RootNamespace>CalendarTests</RootNamespace>
+    <AssemblyName>CalendarTests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -32,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,17 +42,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CalendarPage.cs" />
-    <Compile Include="CalendarPageLine.cs" />
-    <Compile Include="Day.cs" />
-    <Compile Include="EasternHoroscope.cs" />
-    <Compile Include="EasternHoroscopeAnimals.cs" />
-    <Compile Include="Months.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="EasternHoroscope_Test.cs" />
+    <Compile Include="Program_Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <ProjectReference Include="..\Calendar%28v2%29\Calendar%28v2%29.csproj">
+      <Project>{edb802e6-6b70-4b04-af7a-6837f85f1e4b}</Project>
+      <Name>Calendar%28v2%29</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
