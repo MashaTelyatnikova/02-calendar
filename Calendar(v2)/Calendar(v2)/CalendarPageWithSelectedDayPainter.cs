@@ -27,20 +27,20 @@ namespace Calendar_v2_
         private readonly Pen boundaryPen = Pens.Black;
         private readonly Color holidayColor = Color.Red;
         private readonly Color weekdayColor = Color.Blue;
-        private readonly Dictionary<EasternHoroscopeAnimals, string> imageOfAnimal = new Dictionary<EasternHoroscopeAnimals, string>()
+        private readonly Dictionary<EasternHoroscopeAnimals, Image> imageOfAnimal = new Dictionary<EasternHoroscopeAnimals, Image>()
         {
-            {EasternHoroscopeAnimals.Bull, "img/bull.png"},
-            {EasternHoroscopeAnimals.Cock, "img/cock.png"},
-            {EasternHoroscopeAnimals.Dog, "img/dog.png"},
-            {EasternHoroscopeAnimals.Dragon, "img/dragon.png"},
-            {EasternHoroscopeAnimals.Horse, "img/horse.png"},
-            {EasternHoroscopeAnimals.Monkey, "img/monkey.png"},
-            {EasternHoroscopeAnimals.Pig, "img/pig.png"},
-            {EasternHoroscopeAnimals.Rabbit, "img/rabbit.png"},
-            {EasternHoroscopeAnimals.Rat, "img/rat.png"},
-            {EasternHoroscopeAnimals.Sheep, "img/sheep.png"},
-            {EasternHoroscopeAnimals.Snake, "img/snake.png"},
-            {EasternHoroscopeAnimals.Tiger, "img/tiger.png"}
+            {EasternHoroscopeAnimals.Bull, CalendarResources.bull},
+            {EasternHoroscopeAnimals.Cock, CalendarResources.cock},
+            {EasternHoroscopeAnimals.Dog, CalendarResources.dog},
+            {EasternHoroscopeAnimals.Dragon, CalendarResources.dragon},
+            {EasternHoroscopeAnimals.Horse, CalendarResources.horse},
+            {EasternHoroscopeAnimals.Monkey, CalendarResources.monkey},
+            {EasternHoroscopeAnimals.Pig, CalendarResources.pig},
+            {EasternHoroscopeAnimals.Rabbit, CalendarResources.rabbit},
+            {EasternHoroscopeAnimals.Rat, CalendarResources.rat},
+            {EasternHoroscopeAnimals.Sheep, CalendarResources.sheep},
+            {EasternHoroscopeAnimals.Snake, CalendarResources.snake},
+            {EasternHoroscopeAnimals.Tiger, CalendarResources.tiger}
         };
 
         public CalendarPageWithSelectedDayPainter(CalendarPage calendarPage, int selectedDay)
@@ -66,7 +66,7 @@ namespace Calendar_v2_
         private void DrawAnimal(Graphics graphics)
         {
             var animal = EasternHoroscope.GetAnimalOfYear(calendarPage.Year);
-            graphics.DrawImage(new Bitmap(imageOfAnimal[animal]), 0, 0);
+            graphics.DrawImage(imageOfAnimal[animal], 0, 0);
         }
 
         private void DrawHeader(Graphics graphics)

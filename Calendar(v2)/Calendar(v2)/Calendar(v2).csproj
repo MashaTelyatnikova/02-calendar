@@ -45,6 +45,11 @@
     <Compile Include="CalendarPage.cs" />
     <Compile Include="CalendarPageLine.cs" />
     <Compile Include="CalendarPageWithSelectedDayPainter.cs" />
+    <Compile Include="CalendarResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CalendarResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Day.cs" />
     <Compile Include="EasternHoroscope.cs" />
     <Compile Include="EasternHoroscopeAnimals.cs" />
@@ -54,6 +59,29 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\bull.png" />
+    <Content Include="Resources\cock.png" />
+    <Content Include="Resources\dog.png" />
+    <Content Include="Resources\dragon.png" />
+    <Content Include="Resources\horse.png" />
+    <Content Include="Resources\monkey.png" />
+    <Content Include="Resources\pig.png" />
+    <Content Include="Resources\rabbit.png" />
+    <Content Include="Resources\rat.png" />
+    <Content Include="Resources\sheep.png" />
+    <Content Include="Resources\snake.png" />
+    <Content Include="Resources\tiger.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CalendarResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CalendarResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Debug\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
