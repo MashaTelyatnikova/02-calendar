@@ -34,6 +34,13 @@ namespace Calendar_v2_
                 Console.WriteLine(@"Incorrect date.");
                 return;
             }
+
+            var calendarPageWithSelectedDayPainter =
+               new CalendarPageWithSelectedDayPainter(new CalendarPage(currentDate.Year, currentDate.Month),
+                   currentDate.Day);
+
+            var calendarImage = calendarPageWithSelectedDayPainter.Paint();
+            calendarImage.Save(outputFileName);
         }
 
         public static bool IsValidFormatDate(string date)
