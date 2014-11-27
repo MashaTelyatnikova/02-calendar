@@ -26,8 +26,7 @@ namespace Calendar_v2_
                 Console.WriteLine(@"Invalid format date. The correct format is dd/mm/yyyy");
                 return;
             }
-
-
+            
             DateTime currentDate;
 
             if (!DateTime.TryParse(date, out currentDate))
@@ -35,12 +34,8 @@ namespace Calendar_v2_
                 Console.WriteLine(@"Incorrect date.");
                 return;
             }
-
-            var calendarPageWithSelectedDayPainter =
-               new CalendarPageWithSelectedDayPainter(new CalendarPage(currentDate.Year, currentDate.Month),
-                   currentDate.Day);
-
-            var calendarImage = calendarPageWithSelectedDayPainter.Paint();
+            
+            var calendarImage = CalendarPagePainter.Paint(new CalendarPage(currentDate));
             calendarImage.Save(outputFileName);
         }
 

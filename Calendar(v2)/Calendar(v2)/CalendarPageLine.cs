@@ -8,18 +8,16 @@ namespace Calendar_v2_
 {
     public class CalendarPageLine
     {
-        private readonly HashSet<Day> days;
-        public CalendarPageLine()
+        private readonly List<Day> days;
+        public int Number { get; private set; }
+
+        public CalendarPageLine(IEnumerable<Day> days, int number)
         {
-            days = new HashSet<Day>();
+            this.days = days.ToList();
+            Number = number;
         }
 
-        public void Add(int day, DayOfWeek dayOfWeek)
-        {
-            days.Add(new Day(day, dayOfWeek));
-        }
-
-        public HashSet<Day> GetDays()
+        public IEnumerable<Day> GetDays()
         {
             return days;
         }

@@ -44,7 +44,7 @@
   <ItemGroup>
     <Compile Include="CalendarPage.cs" />
     <Compile Include="CalendarPageLine.cs" />
-    <Compile Include="CalendarPageWithSelectedDayPainter.cs" />
+    <Compile Include="CalendarPagePainter.cs" />
     <Compile Include="CalendarResources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -78,6 +78,7 @@
     <EmbeddedResource Include="CalendarResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>CalendarResources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
