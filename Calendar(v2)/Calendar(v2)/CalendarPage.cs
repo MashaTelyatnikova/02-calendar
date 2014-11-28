@@ -19,37 +19,58 @@ namespace Calendar_v2_
         {
             Year = date.Year;
             Month = date.Month;
-            SelectedDay = new Day(date.Day, date.DayOfWeek);
             Animal = EasternHoroscope.GetAnimalOfYear(Year);
             CalendarPageLines = GetCalendarPageLines().ToList();
+            SelectedDay = new Day(date.Day, date.DayOfWeek);
+            SelectedDayLineNumber = GetSelectedDayLineNumber();
         }
 
         private IEnumerable<CalendarPageLine> GetCalendarPageLines()
         {
-            var currentPageLineDays = new List<Day>();
-            var number = 1;
-            foreach (var day in GetAllDays(Year, Month))
+            var startDay = GetFirstDay();
+            var lastDay = GetLastDay();
+            var lineNumber = 1;
+            while (startDay.Number <= lastDay.Number)
             {
-                currentPageLineDays.Add(day);
-                if (SelectedDay.Equals(day))
-                    SelectedDayLineNumber = number;
-
-                if (day.DayOfWeek != DayOfWeek.Sunday) continue;
-
-                yield return new CalendarPageLine(currentPageLineDays, number);
-                number++;
-                currentPageLineDays = new List<Day>();
+                var lineDays = GetPageLineDays(startDay.Number, startDay.DayOfWeek, lastDay.Number).ToList();
+                yield return new CalendarPageLine(lineDays, lineNumber);
+                
+                lineNumber++;
+                startDay = new Day(lineDays.Last().Number + 1, (DayOfWeek)(((int)lineDays.Last().DayOfWeek + 1)%7));
             }
-
-            yield return new CalendarPageLine(currentPageLineDays, number);
         }
 
-        private static IEnumerable<Day> GetAllDays(int year, int month)
+        private Day GetFirstDay()
         {
-            return Enumerable.Range(1, DateTime.DaysInMonth(year, month))
-                    .Select(day => new DateTime(year, month, day))
-                    .Select(i => new Day(i.Day, i.DayOfWeek))
-                    .ToList();
+            return new Day(1, GetDayOfWeek(1));
+        }
+
+        private Day GetLastDay()
+        {
+            var lastDayNumber = DateTime.DaysInMonth(Year, Month);
+            return new Day(lastDayNumber, GetDayOfWeek(lastDayNumber));
+        }
+
+        private DayOfWeek GetDayOfWeek(int number)
+        {
+            return new DateTime(Year, Month, number).DayOfWeek;
+        }
+
+        private static IEnumerable<Day> GetPageLineDays(int pageLineStartDay, DayOfWeek pageLineStartDayOfWeek, int lastDay)
+        {
+            while (pageLineStartDayOfWeek != DayOfWeek.Sunday && pageLineStartDay < lastDay)
+            {
+                yield return new Day(pageLineStartDay, pageLineStartDayOfWeek);
+                pageLineStartDayOfWeek = (DayOfWeek) (((int) pageLineStartDayOfWeek + 1)%7);
+                pageLineStartDay++;
+            }
+
+            yield return new Day(pageLineStartDay, pageLineStartDayOfWeek);
+        }
+
+        private int GetSelectedDayLineNumber()
+        {
+            return CalendarPageLines.First(line => line.ContainsDay(SelectedDay)).Number;
         }
     }
 }

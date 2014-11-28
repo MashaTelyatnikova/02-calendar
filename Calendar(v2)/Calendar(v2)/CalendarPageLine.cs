@@ -21,5 +21,10 @@ namespace Calendar_v2_
         {
             return days;
         }
+
+        public bool ContainsDay(Day day)
+        {
+            return days.Contains(day);
+        }
     }
 }
