@@ -11,21 +11,10 @@ namespace Calendar_v2_
         private const int StartYear = 1948;
         public static EasternHoroscopeAnimals GetAnimalOfYear(int year)
         {
-            var result = 0;
-            while (year != StartYear)
-            {
-                if (year <= StartYear)
-                {
-                    result = ((((result - 1) % 12) + 12) % 12);
-                    year++;
-                }
-                else
-                {
-                    result = ((result + 1) % 12);
-                    year--;
-                }
-            }
-            return (EasternHoroscopeAnimals)result;
+            var difference = Math.Abs(StartYear - year) % 12;
+            if (year <= StartYear)
+                return (EasternHoroscopeAnimals) ((12 - difference)%12);
+            return (EasternHoroscopeAnimals) (difference%12);
         }
     }
 }
