@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Calendar_v2_;
+﻿using Calendar_v2_;
 using NUnit.Framework;
 
 namespace CalendarTests
