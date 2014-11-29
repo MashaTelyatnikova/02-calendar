@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Calendar_v2_
+﻿namespace Calendar_v2_
 {
     public enum EasternHoroscopeAnimals
     {

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
-using System.Linq;
 
 namespace Calendar_v2_
 {
@@ -69,7 +68,7 @@ namespace Calendar_v2_
 
         private static void DrawHeader(Graphics graphics, int year, int month)
         {
-            graphics.DrawString(Months.GetMonthName(month) + " " + year,
+            graphics.DrawString(DateTimeFormatInfo.InvariantInfo.GetMonthName(month) + " " + year,
                             HeaderFont,
                             TextBrush,
                             StartX,
@@ -79,9 +78,9 @@ namespace Calendar_v2_
 
         private static void DrawWeekDays(Graphics graphics)
         {
-            var weekDays = new[] { "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun" };
-            for (var i = 0; i < weekDays.Count(); ++i)
-                graphics.DrawString(weekDays[i], TextFont, TextBrush, StartX + i * CellWidth, StartY);
+            var weekDays = DateTimeFormatInfo.InvariantInfo.AbbreviatedDayNames;
+            for (var i = 1; i <= 7; ++i)
+                graphics.DrawString(weekDays[i % 7], TextFont, TextBrush, StartX + (i - 1) * CellWidth, StartY);
         }
 
         private static void DrawCalendarPageLines(Graphics graphics, IEnumerable<CalendarPageLine> calendarPageLines)
