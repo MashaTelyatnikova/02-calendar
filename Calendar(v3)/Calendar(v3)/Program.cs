@@ -29,6 +29,9 @@ namespace Calendar_v3_
                 Console.WriteLine(@"Incorrect date.");
                 return;
             }
+
+            var calendarPageImage = CalendarPagePainter.CalendarPagePainter.Paint(new CalendarPage.CalendarPage(currentDate));
+            calendarPageImage.Save(outputFileName);
         }
 
         public static bool IsValidFormatDate(string date)
