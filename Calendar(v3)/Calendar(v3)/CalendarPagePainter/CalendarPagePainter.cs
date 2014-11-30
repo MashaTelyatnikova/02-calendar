@@ -54,14 +54,14 @@ namespace Calendar_v3_.CalendarPagePainter
 
         private static void DrawCalendarPage(CalendarPage.CalendarPage calendarPage, Graphics calendarPageGraphics)
         {
-            DrawBackColor(calendarPageGraphics);
-            DrawAnimal(calendarPage.Animal, calendarPageGraphics);
+            DrawBackground(calendarPageGraphics);
+            DrawAnimal(EasternHoroscope.EasternHoroscope.GetAnimalOfYear(calendarPage.Yer), calendarPageGraphics);
             DrawHeader(calendarPage.GetHeader(), calendarPageGraphics);
             DrawWeekDays(calendarPageGraphics);
             DrawDays(calendarPage.Days, calendarPageGraphics);
         }
 
-        private static void DrawBackColor(Graphics calendarPageGraphics)
+        private static void DrawBackground(Graphics calendarPageGraphics)
         {
             calendarPageGraphics.Clear(CalendarBackColor);
         }

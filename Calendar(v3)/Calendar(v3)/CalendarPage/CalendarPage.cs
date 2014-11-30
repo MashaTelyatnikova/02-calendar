@@ -10,14 +10,12 @@ namespace Calendar_v3_.CalendarPage
     {
         public int Yer { get; private set; }
         public int Month { get; private set; }
-        public EasternHoroscopeAnimals Animal { get; private set; }
         public IEnumerable<CalendarPageDay> Days { get; private set; }
 
         public CalendarPage(DateTime date)
         {
             Yer = date.Year;
             Month = date.Month;
-            Animal = EasternHoroscope.EasternHoroscope.GetAnimalOfYear(Yer);
             Days = GetDays(date);
         }
 
