@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CalendarPage\CalendarPage.cs" />
+    <Compile Include="CalendarPage\CalendarPageDay.cs" />
     <Compile Include="EasternHoroscope\EasternHoroscope.cs" />
     <Compile Include="EasternHoroscope\enums\EasternHoroscopeAnimals.cs" />
     <Compile Include="Program.cs" />
