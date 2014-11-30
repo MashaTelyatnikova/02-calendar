@@ -3,32 +3,43 @@ using System.Text.RegularExpressions;
 
 namespace Calendar_v3_
 {
-    public static class Program
+    public class Program
     {
+        private readonly string date;
+        private readonly string outputFileName;
+
         static void Main(string[] args)
         {
-            if (args.Length != 2)
+            try
+            {
+                var program = new Program(args[0], args[1]);
+                program.Run();
+            }
+            catch (IndexOutOfRangeException)
             {
                 Console.WriteLine(@"Еnter two arguments - the current date and output filename.");
-                return;
             }
-
-            var date = args[0];
-            var outputFileName = args[1];
-
-            if (!IsValidFormatDate(date))
+            catch (Exception ex)
             {
-                Console.WriteLine(@"Invalid format date. The correct format is dd/mm/yyyy");
-                return;
+                Console.WriteLine(ex.Message);
             }
+        }
+
+        public Program(string date, string outputFileName)
+        {
+            this.date = date;
+            this.outputFileName = outputFileName;
+        }
+
+        public void Run()
+        {
+            if (!IsValidFormatDate(date))
+                throw new Exception(@"Invalid format date. The correct format is dd/mm/yyyy");
 
             DateTime currentDate;
 
             if (!DateTime.TryParse(date, out currentDate))
-            {
-                Console.WriteLine(@"Incorrect date.");
-                return;
-            }
+                throw new Exception(@"Incorrect date.");
 
             var calendarPageImage = CalendarPagePainter.CalendarPagePainter.Paint(new CalendarPage.CalendarPage(currentDate));
             calendarPageImage.Save(outputFileName);
