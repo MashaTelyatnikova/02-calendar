@@ -48,10 +48,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CalendarPagePainterResources.resx</DependentUpon>
     </Compile>
-    <Compile Include="CalendarPage\CalendarPage.cs" />
-    <Compile Include="CalendarPage\CalendarPageDay.cs" />
+    <Compile Include="CalendarPageUtils\CalendarPage.cs" />
+    <Compile Include="CalendarPageUtils\CalendarPageDay.cs" />
     <Compile Include="EasternHoroscope\EasternHoroscope.cs" />
-    <Compile Include="EasternHoroscope\enums\EasternHoroscopeAnimals.cs" />
+    <Compile Include="EasternHoroscope\Enums\EasternHoroscopeAnimals.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

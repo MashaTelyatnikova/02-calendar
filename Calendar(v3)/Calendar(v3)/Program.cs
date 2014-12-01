@@ -41,8 +41,10 @@ namespace Calendar_v3_
             if (!DateTime.TryParse(date, out currentDate))
                 throw new Exception(@"Incorrect date.");
 
-            var calendarPageImage = CalendarPagePainter.CalendarPagePainter.Paint(new CalendarPage.CalendarPage(currentDate));
-            calendarPageImage.Save(outputFileName);
+            using (var calendarPageImage = CalendarPagePainter.CalendarPagePainter.Paint(new CalendarPageUtil.CalendarPage(currentDate)))
+            {
+                calendarPageImage.Save(outputFileName);
+            }
         }
 
         public static bool IsValidFormatDate(string date)

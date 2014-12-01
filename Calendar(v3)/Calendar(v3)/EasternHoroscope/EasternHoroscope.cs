@@ -1,5 +1,5 @@
 ﻿using System;
-using Calendar_v3_.EasternHoroscope.enums;
+using Calendar_v3_.EasternHoroscope.Enums;
 
 namespace Calendar_v3_.EasternHoroscope
 {

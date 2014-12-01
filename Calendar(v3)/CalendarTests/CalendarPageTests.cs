@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Calendar_v3_.CalendarPage;
+using Calendar_v3_.CalendarPageUtil;
 using NUnit.Framework;
 
 namespace CalendarTests
@@ -46,7 +46,7 @@ namespace CalendarTests
                 new CalendarPageDay(30, DayOfWeek.Sunday, true),
             };
 
-            Assert.That(calendarPage.Yer, Is.EqualTo(2014));
+            Assert.That(calendarPage.Year, Is.EqualTo(2014));
             Assert.That(calendarPage.Month, Is.EqualTo(11));
             Assert.That(calendarPage.Days, Is.EqualTo(expectedDays));
         }
@@ -88,7 +88,7 @@ namespace CalendarTests
                 new CalendarPageDay(29, DayOfWeek.Tuesday, false)
             };
 
-            Assert.That(calendarPage.Yer, Is.EqualTo(2000));
+            Assert.That(calendarPage.Year, Is.EqualTo(2000));
             Assert.That(calendarPage.Month, Is.EqualTo(2));
             Assert.That(calendarPage.Days, Is.EqualTo(expectedDays));
         }
@@ -128,7 +128,7 @@ namespace CalendarTests
                 new CalendarPageDay(27, DayOfWeek.Friday, false),
                 new CalendarPageDay(28, DayOfWeek.Saturday, false)
             };
-            Assert.That(calendarPage.Yer, Is.EqualTo(2015));
+            Assert.That(calendarPage.Year, Is.EqualTo(2015));
             Assert.That(calendarPage.Month, Is.EqualTo(2));
             Assert.That(calendarPage.Days, Is.EqualTo(expectedDays));
         }

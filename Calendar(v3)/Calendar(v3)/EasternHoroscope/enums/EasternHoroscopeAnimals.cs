@@ -1,4 +1,4 @@
-﻿namespace Calendar_v3_.EasternHoroscope.enums
+﻿namespace Calendar_v3_.EasternHoroscope.Enums
 {
     public enum EasternHoroscopeAnimals
     {

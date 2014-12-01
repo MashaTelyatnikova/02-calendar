@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
-using Calendar_v3_.CalendarPage;
-using Calendar_v3_.EasternHoroscope.enums;
+using Calendar_v3_.CalendarPageUtil;
+using Calendar_v3_.EasternHoroscope.Enums;
 
 namespace Calendar_v3_.CalendarPagePainter
 {
@@ -42,20 +42,21 @@ namespace Calendar_v3_.CalendarPagePainter
             {EasternHoroscopeAnimals.Tiger, CalendarPagePainterResources.tiger}
         };
 
-        public static Bitmap Paint(CalendarPage.CalendarPage calendarPage)
+        public static Bitmap Paint(CalendarPage calendarPage)
         {
             var calendarPageImage = new Bitmap(CalendarPageWidth, CalendarPageHeight);
-            var calendarPageGraphics = Graphics.FromImage(calendarPageImage);
-
-            DrawCalendarPage(calendarPage, calendarPageGraphics);
-
+            using (var calendarPageGraphics = Graphics.FromImage(calendarPageImage))
+            {
+                DrawCalendarPage(calendarPage, calendarPageGraphics);
+            }
+            
             return calendarPageImage;
         }
 
-        private static void DrawCalendarPage(CalendarPage.CalendarPage calendarPage, Graphics calendarPageGraphics)
+        private static void DrawCalendarPage(CalendarPage calendarPage, Graphics calendarPageGraphics)
         {
             DrawBackground(calendarPageGraphics);
-            DrawAnimal(EasternHoroscope.EasternHoroscope.GetAnimalOfYear(calendarPage.Yer), calendarPageGraphics);
+            DrawAnimal(EasternHoroscope.EasternHoroscope.GetAnimalOfYear(calendarPage.Year), calendarPageGraphics);
             DrawHeader(calendarPage.GetHeader(), calendarPageGraphics);
             DrawWeekDays(calendarPageGraphics);
             DrawDays(calendarPage.Days, calendarPageGraphics);
