@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Text.RegularExpressions;
+using System.Globalization;
 using Calendar_v3_.CalendarPagePainterUtils;
 using Calendar_v3_.CalendarPageUtils;
 
@@ -17,18 +17,14 @@ namespace Calendar_v3_
 
             var date = args[0];
             var outputFileName = args[1];
-
-            if (!IsValidFormatDate(date))
-            {
-                Console.WriteLine(@"Invalid format date. The correct format is dd/mm/yyyy");
-                return;
-            }
+            var culture = DateTimeFormatInfo.CurrentInfo ?? DateTimeFormatInfo.InvariantInfo;
 
             DateTime currentDate;
-
-            if (!DateTime.TryParse(date, out currentDate))
+            if (!DateTime.TryParse(date, culture, DateTimeStyles.AssumeLocal, out currentDate))
             {
-                Console.WriteLine(@"Incorrect date.");
+                Console.WriteLine("Invalid format date. The correct formats are : \n{0}", 
+                    string.Join("\n", culture.GetAllDateTimePatterns()));
+
                 return;
             }
 
@@ -36,13 +32,6 @@ namespace Calendar_v3_
             {
                 calendarPageImage.Save(outputFileName);
             }
-        }
-
-        public static bool IsValidFormatDate(string date)
-        {
-            var validFormatRegex = new Regex(@"\d{2}/\d{2}/\d{3}");
-
-            return validFormatRegex.IsMatch(date) && date.Length == 10;
         }
     }
 }
