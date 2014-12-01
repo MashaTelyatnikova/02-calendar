@@ -1,5 +1,5 @@
 ﻿using System;
-using Calendar_v3_.CalendarPageUtil;
+using Calendar_v3_.CalendarPageUtils;
 using NUnit.Framework;
 
 namespace CalendarTests
@@ -13,7 +13,7 @@ namespace CalendarTests
             var firstDay = new CalendarPageDay(1, DayOfWeek.Monday, false);
             var secondDay = new CalendarPageDay(1, DayOfWeek.Monday, false);
 
-            Assert.AreEqual(firstDay, secondDay);
+            Assert.That(firstDay.Equals(secondDay), Is.True);
         }
 
         [Test]
@@ -22,7 +22,7 @@ namespace CalendarTests
             var firstDay = new CalendarPageDay(1, DayOfWeek.Monday, false);
             var secondDay = new CalendarPageDay(1, DayOfWeek.Monday, true);
 
-            Assert.AreNotEqual(firstDay, secondDay);
+            Assert.That(firstDay.Equals(secondDay), Is.False);
         }
 
         [Test]
@@ -31,7 +31,7 @@ namespace CalendarTests
             var firstDay = new CalendarPageDay(1, DayOfWeek.Monday, false);
             var secondDay = new CalendarPageDay(1, DayOfWeek.Friday, false);
 
-            Assert.AreNotEqual(firstDay, secondDay);
+            Assert.That(firstDay.Equals(secondDay), Is.False);
         }
 
         [Test]
@@ -40,7 +40,7 @@ namespace CalendarTests
             var firstDay = new CalendarPageDay(1, DayOfWeek.Monday, false);
             var secondDay = new CalendarPageDay(2, DayOfWeek.Monday, false);
 
-            Assert.AreNotEqual(firstDay, secondDay);
+            Assert.That(firstDay.Equals(secondDay), Is.False);
         }
 
         [Test]
@@ -49,7 +49,7 @@ namespace CalendarTests
             var firstDay = new CalendarPageDay(1, DayOfWeek.Monday, false);
             var secondDay = new CalendarPageDay(2, DayOfWeek.Friday, false);
 
-            Assert.AreNotEqual(firstDay, secondDay);
+            Assert.That(firstDay.Equals(secondDay), Is.False);
         }
     }
 }

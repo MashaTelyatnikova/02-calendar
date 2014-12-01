@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Calendar_v3_.CalendarPageUtil;
+using Calendar_v3_.CalendarPageUtils;
 using NUnit.Framework;
 
 namespace CalendarTests

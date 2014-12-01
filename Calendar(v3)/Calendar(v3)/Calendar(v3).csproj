@@ -42,8 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CalendarPagePainter\CalendarPagePainter.cs" />
-    <Compile Include="CalendarPagePainter\CalendarPagePainterResources.Designer.cs">
+    <Compile Include="CalendarPagePainterUtils\CalendarPagePainter.cs" />
+    <Compile Include="CalendarPagePainterUtils\CalendarPagePainterResources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CalendarPagePainterResources.resx</DependentUpon>
@@ -59,46 +59,46 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="CalendarPagePainter\CalendarPagePainterResources.resx">
+    <EmbeddedResource Include="CalendarPagePainterUtils\CalendarPagePainterResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>CalendarPagePainterResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="CalendarPagePainter\Resources\bull.png" />
+    <None Include="CalendarPagePainterUtils\Resources\bull.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="CalendarPagePainter\Resources\cock.png" />
+    <None Include="CalendarPagePainterUtils\Resources\cock.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="CalendarPagePainter\Resources\dog.png" />
+    <None Include="CalendarPagePainterUtils\Resources\dog.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="CalendarPagePainter\Resources\dragon.png" />
+    <None Include="CalendarPagePainterUtils\Resources\dragon.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="CalendarPagePainter\Resources\horse.png" />
+    <None Include="CalendarPagePainterUtils\Resources\horse.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="CalendarPagePainter\Resources\monkey.png" />
+    <None Include="CalendarPagePainterUtils\Resources\monkey.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="CalendarPagePainter\Resources\pig.png" />
+    <None Include="CalendarPagePainterUtils\Resources\pig.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="CalendarPagePainter\Resources\rabbit.png" />
+    <None Include="CalendarPagePainterUtils\Resources\rabbit.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="CalendarPagePainter\Resources\rat.png" />
+    <None Include="CalendarPagePainterUtils\Resources\rat.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="CalendarPagePainter\Resources\sheep.png" />
+    <None Include="CalendarPagePainterUtils\Resources\sheep.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="CalendarPagePainter\Resources\snake.png" />
+    <None Include="CalendarPagePainterUtils\Resources\snake.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="CalendarPagePainter\Resources\tiger.png" />
+    <None Include="CalendarPagePainterUtils\Resources\tiger.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

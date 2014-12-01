@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Calendar_v3_.CalendarPageUtil
+namespace Calendar_v3_.CalendarPageUtils
 {
     public class CalendarPageDay
     {

@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using Calendar_v3_.EasternHoroscope.Enums;
 
-namespace Calendar_v3_.CalendarPageUtil
+namespace Calendar_v3_.CalendarPageUtils
 {
     public class CalendarPage
     {

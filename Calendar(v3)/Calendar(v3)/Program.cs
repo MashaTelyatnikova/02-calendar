@@ -1,47 +1,38 @@
 ﻿using System;
 using System.Text.RegularExpressions;
+using Calendar_v3_.CalendarPagePainterUtils;
+using Calendar_v3_.CalendarPageUtils;
 
 namespace Calendar_v3_
 {
-    public class Program
+    public static class Program
     {
-        private readonly string date;
-        private readonly string outputFileName;
-
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            try
-            {
-                var program = new Program(args[0], args[1]);
-                program.Run();
-            }
-            catch (IndexOutOfRangeException)
+            if (args.Length != 2)
             {
                 Console.WriteLine(@"Еnter two arguments - the current date and output filename.");
+                return;
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-        }
 
-        public Program(string date, string outputFileName)
-        {
-            this.date = date;
-            this.outputFileName = outputFileName;
-        }
+            var date = args[0];
+            var outputFileName = args[1];
 
-        public void Run()
-        {
             if (!IsValidFormatDate(date))
-                throw new Exception(@"Invalid format date. The correct format is dd/mm/yyyy");
+            {
+                Console.WriteLine(@"Invalid format date. The correct format is dd/mm/yyyy");
+                return;
+            }
 
             DateTime currentDate;
 
             if (!DateTime.TryParse(date, out currentDate))
-                throw new Exception(@"Incorrect date.");
+            {
+                Console.WriteLine(@"Incorrect date.");
+                return;
+            }
 
-            using (var calendarPageImage = CalendarPagePainter.CalendarPagePainter.Paint(new CalendarPageUtil.CalendarPage(currentDate)))
+            using (var calendarPageImage = CalendarPagePainter.Paint(new CalendarPage(currentDate)))
             {
                 calendarPageImage.Save(outputFileName);
             }
