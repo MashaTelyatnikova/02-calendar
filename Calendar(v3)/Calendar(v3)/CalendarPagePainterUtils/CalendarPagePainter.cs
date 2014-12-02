@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
 using Calendar_v3_.CalendarPageUtils;
-using Calendar_v3_.EasternHoroscope.Enums;
+using Calendar_v3_.EasternHoroscopeUtils;
+using Calendar_v3_.EasternHoroscopeUtils.Enums;
 
 namespace Calendar_v3_.CalendarPagePainterUtils
 {
@@ -26,21 +27,6 @@ namespace Calendar_v3_.CalendarPagePainterUtils
         private static readonly Color HolidayColor = Color.Red;
         private static readonly Color WeekdayColor = Color.FromArgb(0, 104, 139);
         private static readonly PointF AnimalLocation = new PointF(0, 0);
-        private static readonly Dictionary<EasternHoroscopeAnimals, Image> ImageOfAnimal = new Dictionary<EasternHoroscopeAnimals, Image>()
-        {
-            {EasternHoroscopeAnimals.Bull, CalendarPagePainterResources.bull},
-            {EasternHoroscopeAnimals.Cock, CalendarPagePainterResources.cock},
-            {EasternHoroscopeAnimals.Dog, CalendarPagePainterResources.dog},
-            {EasternHoroscopeAnimals.Dragon, CalendarPagePainterResources.dragon},
-            {EasternHoroscopeAnimals.Horse, CalendarPagePainterResources.horse},
-            {EasternHoroscopeAnimals.Monkey, CalendarPagePainterResources.monkey},
-            {EasternHoroscopeAnimals.Pig, CalendarPagePainterResources.pig},
-            {EasternHoroscopeAnimals.Rabbit, CalendarPagePainterResources.rabbit},
-            {EasternHoroscopeAnimals.Rat, CalendarPagePainterResources.rat},
-            {EasternHoroscopeAnimals.Sheep, CalendarPagePainterResources.sheep},
-            {EasternHoroscopeAnimals.Snake, CalendarPagePainterResources.snake},
-            {EasternHoroscopeAnimals.Tiger, CalendarPagePainterResources.tiger}
-        };
 
         public static Bitmap Paint(CalendarPage calendarPage)
         {
@@ -56,7 +42,7 @@ namespace Calendar_v3_.CalendarPagePainterUtils
         private static void DrawCalendarPage(CalendarPage calendarPage, Graphics calendarPageGraphics)
         {
             DrawBackground(calendarPageGraphics);
-            DrawAnimal(EasternHoroscope.EasternHoroscope.GetAnimalOfYear(calendarPage.Year), calendarPageGraphics);
+            DrawAnimal(EasternHoroscope.GetAnimalOfYear(calendarPage.Year), calendarPageGraphics);
             DrawHeader(GetHeader(calendarPage), calendarPageGraphics);
             DrawWeekDays(calendarPageGraphics);
             DrawDays(calendarPage.Days, calendarPageGraphics);
@@ -73,7 +59,7 @@ namespace Calendar_v3_.CalendarPagePainterUtils
 
         private static void DrawAnimal(EasternHoroscopeAnimals animal, Graphics calendarPageGraphics)
         {
-            calendarPageGraphics.DrawImage(ImageOfAnimal[animal], AnimalLocation);
+            calendarPageGraphics.DrawImage(EasternHoroscope.GetImageOfAnimal(animal), AnimalLocation);
         }
 
         private static void DrawHeader(string header, Graphics caledarPageGraphics)

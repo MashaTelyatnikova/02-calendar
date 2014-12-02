@@ -1,5 +1,5 @@
-﻿using Calendar_v3_.EasternHoroscope;
-using Calendar_v3_.EasternHoroscope.Enums;
+﻿using Calendar_v3_.EasternHoroscopeUtils;
+using Calendar_v3_.EasternHoroscopeUtils.Enums;
 using NUnit.Framework;
 
 namespace CalendarTests

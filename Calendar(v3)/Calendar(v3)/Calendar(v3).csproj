@@ -43,15 +43,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CalendarPagePainterUtils\CalendarPagePainter.cs" />
-    <Compile Include="CalendarPagePainterUtils\CalendarPagePainterResources.Designer.cs">
+    <Compile Include="EasternHoroscopeUtils\EasternHoroscopeResources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CalendarPagePainterResources.resx</DependentUpon>
+      <DependentUpon>EasternHoroscopeResources.resx</DependentUpon>
     </Compile>
     <Compile Include="CalendarPageUtils\CalendarPage.cs" />
     <Compile Include="CalendarPageUtils\CalendarPageDay.cs" />
-    <Compile Include="EasternHoroscope\EasternHoroscope.cs" />
-    <Compile Include="EasternHoroscope\Enums\EasternHoroscopeAnimals.cs" />
+    <Compile Include="EasternHoroscopeUtils\EasternHoroscope.cs" />
+    <Compile Include="EasternHoroscopeUtils\Enums\EasternHoroscopeAnimals.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -59,46 +59,46 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="CalendarPagePainterUtils\CalendarPagePainterResources.resx">
+    <EmbeddedResource Include="EasternHoroscopeUtils\EasternHoroscopeResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>CalendarPagePainterResources.Designer.cs</LastGenOutput>
+      <LastGenOutput>EasternHoroscopeResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="CalendarPagePainterUtils\Resources\bull.png" />
+    <None Include="EasternHoroscopeUtils\Resources\bull.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="CalendarPagePainterUtils\Resources\cock.png" />
+    <None Include="EasternHoroscopeUtils\Resources\cock.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="CalendarPagePainterUtils\Resources\dog.png" />
+    <None Include="EasternHoroscopeUtils\Resources\dog.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="CalendarPagePainterUtils\Resources\dragon.png" />
+    <None Include="EasternHoroscopeUtils\Resources\dragon.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="CalendarPagePainterUtils\Resources\horse.png" />
+    <None Include="EasternHoroscopeUtils\Resources\horse.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="CalendarPagePainterUtils\Resources\monkey.png" />
+    <None Include="EasternHoroscopeUtils\Resources\monkey.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="CalendarPagePainterUtils\Resources\pig.png" />
+    <None Include="EasternHoroscopeUtils\Resources\pig.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="CalendarPagePainterUtils\Resources\rabbit.png" />
+    <None Include="EasternHoroscopeUtils\Resources\rabbit.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="CalendarPagePainterUtils\Resources\rat.png" />
+    <None Include="EasternHoroscopeUtils\Resources\rat.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="CalendarPagePainterUtils\Resources\sheep.png" />
+    <None Include="EasternHoroscopeUtils\Resources\sheep.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="CalendarPagePainterUtils\Resources\snake.png" />
+    <None Include="EasternHoroscopeUtils\Resources\snake.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="CalendarPagePainterUtils\Resources\tiger.png" />
+    <None Include="EasternHoroscopeUtils\Resources\tiger.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
