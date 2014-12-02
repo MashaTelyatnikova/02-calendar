@@ -17,10 +17,10 @@ namespace Calendar_v3_
 
             var date = args[0];
             var outputFileName = args[1];
-            var culture = DateTimeFormatInfo.CurrentInfo ?? DateTimeFormatInfo.InvariantInfo;
+            var culture = DateTimeFormatInfo.CurrentInfo;
 
             DateTime currentDate;
-            if (!DateTime.TryParse(date, culture, DateTimeStyles.AssumeLocal, out currentDate))
+            if (!DateTime.TryParse(date, culture, DateTimeStyles.None, out currentDate))
             {
                 Console.WriteLine("Invalid format date. The correct formats are : \n{0}", 
                     string.Join("\n", culture.GetAllDateTimePatterns()));

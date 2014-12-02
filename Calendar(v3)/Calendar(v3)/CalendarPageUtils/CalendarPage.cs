@@ -18,11 +18,6 @@ namespace Calendar_v3_.CalendarPageUtils
             Days = GetDays(date);
         }
 
-        public string GetHeader()
-        {
-            return string.Format("{0}, {1}", DateTimeFormatInfo.InvariantInfo.GetMonthName(Month), Year);
-        }
-
         private static IEnumerable<CalendarPageDay> GetDays(DateTime date)
         {
             return

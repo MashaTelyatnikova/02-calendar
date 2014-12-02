@@ -57,11 +57,15 @@ namespace Calendar_v3_.CalendarPagePainterUtils
         {
             DrawBackground(calendarPageGraphics);
             DrawAnimal(EasternHoroscope.EasternHoroscope.GetAnimalOfYear(calendarPage.Year), calendarPageGraphics);
-            DrawHeader(calendarPage.GetHeader(), calendarPageGraphics);
+            DrawHeader(GetHeader(calendarPage), calendarPageGraphics);
             DrawWeekDays(calendarPageGraphics);
             DrawDays(calendarPage.Days, calendarPageGraphics);
         }
 
+        private static string GetHeader(CalendarPage calendarPage)
+        {
+            return string.Format("{0}, {1}", DateTimeFormatInfo.InvariantInfo.GetMonthName(calendarPage.Month), calendarPage.Year);
+        }
         private static void DrawBackground(Graphics calendarPageGraphics)
         {
             calendarPageGraphics.Clear(CalendarBackColor);
