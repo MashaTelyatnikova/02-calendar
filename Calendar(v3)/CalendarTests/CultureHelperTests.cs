@@ -37,7 +37,7 @@ namespace CalendarTests
         {
             var cultureHelper = new CultureHelper(new CultureInfo("ru-ru"));
 
-            Assert.That(expectedOffset, Is.EqualTo(cultureHelper.GetOffsetDayOfWeek(dayOfWeek)));
+            Assert.That(cultureHelper.GetOffsetDayOfWeek(dayOfWeek), Is.EqualTo(expectedOffset));
         }
 
         [TestCase(DayOfWeek.Monday, 1)]
@@ -51,7 +51,7 @@ namespace CalendarTests
         {
             var cultureHelper = new CultureHelper(CultureInfo.InvariantCulture);
 
-            Assert.That(expectedOffset, Is.EqualTo(cultureHelper.GetOffsetDayOfWeek(dayOfWeek)));
+            Assert.That(cultureHelper.GetOffsetDayOfWeek(dayOfWeek), Is.EqualTo(expectedOffset));
         }
     }
 }
