@@ -29,7 +29,7 @@ namespace Calendar_v3_
                 return;
             }
 
-            using (var calendarPageImage = CalendarPagePainter.Paint(new CalendarPage(currentDate), new Culture(DateTimeFormatInfo.CurrentInfo)))
+            using (var calendarPageImage = CalendarPagePainter.Paint(new CalendarPage(currentDate), new Culture(CultureInfo.CurrentCulture)))
             {
                 calendarPageImage.Save(outputFileName);
             }

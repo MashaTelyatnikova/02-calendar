@@ -10,16 +10,16 @@ namespace Calendar_v3_.CalendarPagePainterUtils
 {
     public static class CalendarPagePainter
     {
-        private static readonly int CalendarPageWidth;
-        private static readonly int CalendarPageHeight;
+        private const int CalendarPageWidth = 900;
+        private const int CalendarPageHeight = 500;
+        private const int CellWidth = 90;
+        private const int CellHeight = 50;
+        private const int SelectionWidth = 45;
+        private const int SelectionHeight = 50;
+
         private static readonly Color CalendarBackColor = Color.FromArgb(240, 248, 255);
         private static readonly Color SelectionColor = Color.FromArgb(121, 205, 205);
-        private static readonly int StartX;
-        private static readonly int StartY;
-        private static readonly int CellWidth;
-        private static readonly int CellHeight;
-        private static readonly int SelectionWidth;
-        private static readonly int SelectionHeight;
+        private static readonly Point StartCellLocation = new Point(150, 150);
         private static readonly Font TextFont = new Font("Arial", 17);
         private static readonly Brush TextBrush = new SolidBrush(Color.FromArgb(0, 104, 139));
         private static readonly Font DayFont = new Font("Arial", 23);
@@ -27,18 +27,6 @@ namespace Calendar_v3_.CalendarPagePainterUtils
         private static readonly Color HolidayColor = Color.Red;
         private static readonly Color WeekdayColor = Color.FromArgb(0, 104, 139);
         private static readonly PointF AnimalLocation = new PointF(0, 0);
-
-        static CalendarPagePainter()
-        {
-            CalendarPageWidth = 900;
-            CalendarPageHeight = 500;
-            StartX = 150;
-            StartY = 150;
-            CellWidth = 90;
-            CellHeight = 50;
-            SelectionWidth = CellWidth / 2;
-            SelectionHeight = CellHeight;
-        }
 
         public static Bitmap Paint(CalendarPage calendarPage, Culture culture)
         {
@@ -80,8 +68,8 @@ namespace Calendar_v3_.CalendarPagePainterUtils
                             header,
                             HeaderFont,
                             TextBrush,
-                            StartX,
-                            StartY - CellHeight
+                            StartCellLocation.X,
+                            StartCellLocation.Y - CellHeight
                            );
         }
 
@@ -95,8 +83,8 @@ namespace Calendar_v3_.CalendarPagePainterUtils
                                                 culture.GetAbbreviatedDayName(dayOfWeek),
                                                 TextFont,
                                                 TextBrush,
-                                                StartX + horizontalOffset * CellWidth,
-                                                StartY);
+                                                StartCellLocation.X + horizontalOffset * CellWidth,
+                                                StartCellLocation.Y);
             }
         }
 
@@ -107,7 +95,7 @@ namespace Calendar_v3_.CalendarPagePainterUtils
             {
                 var horizontalOffset = culture.GetOffsetDayOfWeek(day.DayOfWeek);
                 DrawDay(day, verticalOffset, horizontalOffset, calendarPageGraphics);
-                if (day.DayOfWeek == culture.GetLastDayOfWeek())
+                if (day.DayOfWeek == culture.LastDayOfWeek)
                     verticalOffset++;
             }
         }
@@ -116,8 +104,8 @@ namespace Calendar_v3_.CalendarPagePainterUtils
         {
             if (day.IsSelected)
                 calendarPageGraphics.FillEllipse(new SolidBrush(SelectionColor),
-                                            StartX + horizontalOffset * CellWidth,
-                                            StartY + verticalOffset * CellHeight,
+                                            StartCellLocation.X + horizontalOffset * CellWidth,
+                                            StartCellLocation.Y + verticalOffset * CellHeight,
                                             SelectionWidth,
                                             SelectionHeight
                                           );
@@ -125,8 +113,8 @@ namespace Calendar_v3_.CalendarPagePainterUtils
             calendarPageGraphics.DrawString(day.Number+"",
                             DayFont,
                             new SolidBrush(GetColorDayOfWeek(day)),
-                            StartX + horizontalOffset * CellWidth,
-                            StartY + verticalOffset * CellHeight);
+                            StartCellLocation.X + horizontalOffset * CellWidth,
+                            StartCellLocation.Y + verticalOffset * CellHeight);
         }
 
         private static Color GetColorDayOfWeek(CalendarPageDay day)
