@@ -112,46 +112,46 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, CultureHelper=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, CultureHelper=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, CultureHelper=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="bull" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\bull.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>Resources\bull.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, CultureHelper=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="cock" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\cock.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>Resources\cock.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, CultureHelper=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="dog" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\dog.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>Resources\dog.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, CultureHelper=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="dragon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\dragon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>Resources\dragon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, CultureHelper=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="horse" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\horse.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>Resources\horse.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, CultureHelper=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="monkey" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\monkey.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>Resources\monkey.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, CultureHelper=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="pig" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\pig.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>Resources\pig.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, CultureHelper=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="rabbit" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\rabbit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>Resources\rabbit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, CultureHelper=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="rat" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\rat.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>Resources\rat.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, CultureHelper=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="sheep" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\sheep.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>Resources\sheep.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, CultureHelper=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="snake" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\snake.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>Resources\snake.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, CultureHelper=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="tiger" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\tiger.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>Resources\tiger.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, CultureHelper=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

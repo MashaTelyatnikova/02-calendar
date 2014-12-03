@@ -11,7 +11,7 @@ namespace CalendarTests
         [Test]
         public void Culture_ForRussianCulture_ReturnsCorrectProperties()
         {
-            var culture = new Culture(new CultureInfo("ru-ru"));
+            var culture = new CultureHelper(new CultureInfo("ru-ru"));
             
             Assert.That(culture.FirstDayOfWeek, Is.EqualTo(DayOfWeek.Monday));
             Assert.That(culture.LastDayOfWeek, Is.EqualTo(DayOfWeek.Sunday));
@@ -20,7 +20,7 @@ namespace CalendarTests
         [Test]
         public void Culture_ForInvariantCulture_ReturnsCorrectProperties()
         {
-            var culture = new Culture(CultureInfo.InvariantCulture);
+            var culture = new CultureHelper(CultureInfo.InvariantCulture);
             
             Assert.That(culture.FirstDayOfWeek, Is.EqualTo(DayOfWeek.Sunday));
             Assert.That(culture.LastDayOfWeek, Is.EqualTo(DayOfWeek.Saturday));
@@ -35,7 +35,7 @@ namespace CalendarTests
         [TestCase(DayOfWeek.Sunday, 6)]
         public void GetOffsetDayOfWeek_ForRussianCulture_ReturnsCorrectOffset(DayOfWeek dayOfWeek, int expectedOffset)
         {
-            var culture = new Culture(new CultureInfo("ru-ru"));
+            var culture = new CultureHelper(new CultureInfo("ru-ru"));
 
             Assert.That(expectedOffset, Is.EqualTo(culture.GetOffsetDayOfWeek(dayOfWeek)));
         }
@@ -49,7 +49,7 @@ namespace CalendarTests
         [TestCase(DayOfWeek.Sunday, 0)]
         public void GetOffsetDayOfWeek_ForInvariantCulture_ReturnsCorrectOffset(DayOfWeek dayOfWeek, int expectedOffset)
         {
-            var culture = new Culture(CultureInfo.InvariantCulture);
+            var culture = new CultureHelper(CultureInfo.InvariantCulture);
 
             Assert.That(expectedOffset, Is.EqualTo(culture.GetOffsetDayOfWeek(dayOfWeek)));
         }

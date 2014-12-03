@@ -3,7 +3,7 @@ using System.Globalization;
 
 namespace Calendar_v3_.CultureUtils
 {
-    public class Culture
+    public class CultureHelper
     {
         private readonly CultureInfo cultureInfo;
 
@@ -20,7 +20,7 @@ namespace Calendar_v3_.CultureUtils
             }
         }
 
-        public Culture(CultureInfo cultureInfo)
+        public CultureHelper(CultureInfo cultureInfo)
         {
             this.cultureInfo = cultureInfo;
         }
