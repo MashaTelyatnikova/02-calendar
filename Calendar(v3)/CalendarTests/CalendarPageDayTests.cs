@@ -5,7 +5,7 @@ using NUnit.Framework;
 namespace CalendarTests
 {
     [TestFixture]
-    public class CalendarPageDayTest
+    public class CalendarPageDayTests
     {
         [Test]
         public void Equals_ForEqualDays_ReturnsTrue()

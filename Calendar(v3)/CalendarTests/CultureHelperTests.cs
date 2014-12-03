@@ -53,5 +53,19 @@ namespace CalendarTests
 
             Assert.That(cultureHelper.GetOffsetDayOfWeek(dayOfWeek), Is.EqualTo(expectedOffset));
         }
+
+        [TestCase(DayOfWeek.Monday, 2)]
+        [TestCase(DayOfWeek.Tuesday, 3)]
+        [TestCase(DayOfWeek.Wednesday, 4)]
+        [TestCase(DayOfWeek.Thursday, 5)]
+        [TestCase(DayOfWeek.Friday, 6)]
+        [TestCase(DayOfWeek.Saturday, 0)]
+        [TestCase(DayOfWeek.Sunday, 1)]
+        public void GetOffsetDayOfWeek_ForPersianIran_ReturnsCorrectOffset(DayOfWeek dayOfWeek, int expectedOffset)
+        {
+            var cultureHelper = new CultureHelper(new CultureInfo("fa-IR"));
+
+            Assert.That(cultureHelper.GetOffsetDayOfWeek(dayOfWeek), Is.EqualTo(expectedOffset));
+        }
     }
 }
