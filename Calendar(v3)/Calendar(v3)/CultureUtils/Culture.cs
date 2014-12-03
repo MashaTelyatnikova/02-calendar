@@ -6,15 +6,23 @@ namespace Calendar_v3_.CultureUtils
     public class Culture
     {
         private readonly CultureInfo cultureInfo;
-        public DayOfWeek FirstDayOfWeek { get; private set; }
-        public DayOfWeek LastDayOfWeek { get; private set; }
+
+        public DayOfWeek FirstDayOfWeek
+        {
+            get { return cultureInfo.DateTimeFormat.FirstDayOfWeek; } 
+        }
+
+        public DayOfWeek LastDayOfWeek
+        {
+            get
+            {
+                return (DayOfWeek)(((int)FirstDayOfWeek + 6) % 7);
+            }
+        }
 
         public Culture(CultureInfo cultureInfo)
         {
             this.cultureInfo = cultureInfo;
-            
-            FirstDayOfWeek = GetFirstDayOfWeek();
-            LastDayOfWeek = GetLastDayOfWeek();
         }
 
         public string GetAbbreviatedDayName(DayOfWeek dayOfWeek)
@@ -35,16 +43,6 @@ namespace Calendar_v3_.CultureUtils
                 ++offset;
             }
             return offset;
-        }
-
-        private DayOfWeek GetFirstDayOfWeek()
-        {
-            return cultureInfo.DateTimeFormat.FirstDayOfWeek;
-        }
-
-        private DayOfWeek GetLastDayOfWeek()
-        {
-            return (DayOfWeek)(((int)FirstDayOfWeek + 6) % 7);
         }
     }
 }
