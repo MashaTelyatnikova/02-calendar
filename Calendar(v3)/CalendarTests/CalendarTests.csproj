@@ -44,7 +44,7 @@
   <ItemGroup>
     <Compile Include="CalendarPageDayTests.cs" />
     <Compile Include="CalendarPageTests.cs" />
-    <Compile Include="CultureTests.cs" />
+    <Compile Include="CultureHelperTests.cs" />
     <Compile Include="EasternHoroscopeTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

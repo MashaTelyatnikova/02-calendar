@@ -6,24 +6,24 @@ using Calendar_v3_.CultureUtils;
 namespace CalendarTests
 {
     [TestFixture]
-    public class CultureTests
+    public class CultureHelperTests
     {
         [Test]
-        public void Culture_ForRussianCulture_ReturnsCorrectProperties()
+        public void CultureHelper_ForRussianCulture_ReturnsCorrectProperties()
         {
-            var culture = new CultureHelper(new CultureInfo("ru-ru"));
+            var cultureHelper = new CultureHelper(new CultureInfo("ru-ru"));
             
-            Assert.That(culture.FirstDayOfWeek, Is.EqualTo(DayOfWeek.Monday));
-            Assert.That(culture.LastDayOfWeek, Is.EqualTo(DayOfWeek.Sunday));
+            Assert.That(cultureHelper.FirstDayOfWeek, Is.EqualTo(DayOfWeek.Monday));
+            Assert.That(cultureHelper.LastDayOfWeek, Is.EqualTo(DayOfWeek.Sunday));
         }
 
         [Test]
-        public void Culture_ForInvariantCulture_ReturnsCorrectProperties()
+        public void CultureHelper_ForInvariantCulture_ReturnsCorrectProperties()
         {
-            var culture = new CultureHelper(CultureInfo.InvariantCulture);
+            var cultureHelper = new CultureHelper(CultureInfo.InvariantCulture);
             
-            Assert.That(culture.FirstDayOfWeek, Is.EqualTo(DayOfWeek.Sunday));
-            Assert.That(culture.LastDayOfWeek, Is.EqualTo(DayOfWeek.Saturday));
+            Assert.That(cultureHelper.FirstDayOfWeek, Is.EqualTo(DayOfWeek.Sunday));
+            Assert.That(cultureHelper.LastDayOfWeek, Is.EqualTo(DayOfWeek.Saturday));
         }
 
         [TestCase(DayOfWeek.Monday, 0)]
@@ -35,9 +35,9 @@ namespace CalendarTests
         [TestCase(DayOfWeek.Sunday, 6)]
         public void GetOffsetDayOfWeek_ForRussianCulture_ReturnsCorrectOffset(DayOfWeek dayOfWeek, int expectedOffset)
         {
-            var culture = new CultureHelper(new CultureInfo("ru-ru"));
+            var cultureHelper = new CultureHelper(new CultureInfo("ru-ru"));
 
-            Assert.That(expectedOffset, Is.EqualTo(culture.GetOffsetDayOfWeek(dayOfWeek)));
+            Assert.That(expectedOffset, Is.EqualTo(cultureHelper.GetOffsetDayOfWeek(dayOfWeek)));
         }
 
         [TestCase(DayOfWeek.Monday, 1)]
@@ -49,9 +49,9 @@ namespace CalendarTests
         [TestCase(DayOfWeek.Sunday, 0)]
         public void GetOffsetDayOfWeek_ForInvariantCulture_ReturnsCorrectOffset(DayOfWeek dayOfWeek, int expectedOffset)
         {
-            var culture = new CultureHelper(CultureInfo.InvariantCulture);
+            var cultureHelper = new CultureHelper(CultureInfo.InvariantCulture);
 
-            Assert.That(expectedOffset, Is.EqualTo(culture.GetOffsetDayOfWeek(dayOfWeek)));
+            Assert.That(expectedOffset, Is.EqualTo(cultureHelper.GetOffsetDayOfWeek(dayOfWeek)));
         }
     }
 }

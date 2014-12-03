@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.Linq;
 
 namespace Calendar_v3_.CultureUtils
 {
@@ -38,6 +39,7 @@ namespace Calendar_v3_.CultureUtils
         public int GetOffsetDayOfWeek(DayOfWeek dayOfWeek)
         {
             var offset = 0;
+          
             for (var day = FirstDayOfWeek; day != dayOfWeek; day = (DayOfWeek)(((int)(day) + 1) % 7))
             {
                 ++offset;
