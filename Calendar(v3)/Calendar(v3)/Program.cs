@@ -2,6 +2,7 @@
 using System.Globalization;
 using Calendar_v3_.CalendarPagePainterUtils;
 using Calendar_v3_.CalendarPageUtils;
+using Calendar_v3_.CultureUtils;
 
 namespace Calendar_v3_
 {
@@ -28,7 +29,7 @@ namespace Calendar_v3_
                 return;
             }
 
-            using (var calendarPageImage = CalendarPagePainter.Paint(new CalendarPage(currentDate)))
+            using (var calendarPageImage = CalendarPagePainter.Paint(new CalendarPage(currentDate), new Culture(DateTimeFormatInfo.CurrentInfo)))
             {
                 calendarPageImage.Save(outputFileName);
             }

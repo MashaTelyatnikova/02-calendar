@@ -1,25 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Globalization;
 using Calendar_v3_.CalendarPageUtils;
 using Calendar_v3_.EasternHoroscopeUtils;
 using Calendar_v3_.EasternHoroscopeUtils.Enums;
+using Calendar_v3_.CultureUtils;
 
 namespace Calendar_v3_.CalendarPagePainterUtils
 {
     public static class CalendarPagePainter
     {
-        private const int CalendarPageWidth = 900;
-        private const int CalendarPageHeight = 500;
+        private static readonly int CalendarPageWidth;
+        private static readonly int CalendarPageHeight;
         private static readonly Color CalendarBackColor = Color.FromArgb(240, 248, 255);
         private static readonly Color SelectionColor = Color.FromArgb(121, 205, 205);
-        private const int StartX = 150;
-        private const int StartY = 150;
-        private const int CellWidth = 100;
-        private const int CellHeight = 50;
-        private const int SelectionWidth = 45;
-        private const int SelectionHeight = 40;
+        private static readonly int StartX;
+        private static readonly int StartY;
+        private static readonly int CellWidth;
+        private static readonly int CellHeight;
+        private static readonly int SelectionWidth;
+        private static readonly int SelectionHeight;
         private static readonly Font TextFont = new Font("Arial", 17);
         private static readonly Brush TextBrush = new SolidBrush(Color.FromArgb(0, 104, 139));
         private static readonly Font DayFont = new Font("Arial", 23);
@@ -28,29 +28,41 @@ namespace Calendar_v3_.CalendarPagePainterUtils
         private static readonly Color WeekdayColor = Color.FromArgb(0, 104, 139);
         private static readonly PointF AnimalLocation = new PointF(0, 0);
 
-        public static Bitmap Paint(CalendarPage calendarPage)
+        static CalendarPagePainter()
+        {
+            CalendarPageWidth = 900;
+            CalendarPageHeight = 500;
+            StartX = 150;
+            StartY = 150;
+            CellWidth = 90;
+            CellHeight = 50;
+            SelectionWidth = CellWidth / 2;
+            SelectionHeight = CellHeight;
+        }
+
+        public static Bitmap Paint(CalendarPage calendarPage, Culture culture)
         {
             var calendarPageImage = new Bitmap(CalendarPageWidth, CalendarPageHeight);
             using (var calendarPageGraphics = Graphics.FromImage(calendarPageImage))
             {
-                DrawCalendarPage(calendarPage, calendarPageGraphics);
+                DrawCalendarPage(calendarPage, culture, calendarPageGraphics);
             }
             
             return calendarPageImage;
         }
 
-        private static void DrawCalendarPage(CalendarPage calendarPage, Graphics calendarPageGraphics)
+        private static void DrawCalendarPage(CalendarPage calendarPage, Culture culture, Graphics calendarPageGraphics)
         {
             DrawBackground(calendarPageGraphics);
             DrawAnimal(EasternHoroscope.GetAnimalOfYear(calendarPage.Year), calendarPageGraphics);
-            DrawHeader(GetHeader(calendarPage), calendarPageGraphics);
-            DrawWeekDays(calendarPageGraphics);
-            DrawDays(calendarPage.Days, calendarPageGraphics);
+            DrawHeader(GetHeader(calendarPage, culture), calendarPageGraphics);
+            DrawWeekDays(culture, calendarPageGraphics);
+            DrawDays(calendarPage.Days, culture, calendarPageGraphics);
         }
 
-        private static string GetHeader(CalendarPage calendarPage)
+        private static string GetHeader(CalendarPage calendarPage, Culture culture)
         {
-            return string.Format("{0}, {1}", DateTimeFormatInfo.InvariantInfo.GetMonthName(calendarPage.Month), calendarPage.Year);
+            return string.Format("{0}, {1}", culture.GetMonthName(calendarPage.Month), calendarPage.Year);
         }
         private static void DrawBackground(Graphics calendarPageGraphics)
         {
@@ -73,36 +85,35 @@ namespace Calendar_v3_.CalendarPagePainterUtils
                            );
         }
 
-        private static void DrawWeekDays(Graphics calendarPageGraphics)
+        private static void DrawWeekDays(Culture culture, Graphics calendarPageGraphics)
         {
             for (var dayOfWeekNumber = 0; dayOfWeekNumber < 7; ++dayOfWeekNumber)
             {
                 var dayOfWeek = (DayOfWeek)dayOfWeekNumber;
-                var offset = GetOffsetDayOfWeek(dayOfWeek);
+                var horizontalOffset = culture.GetOffsetDayOfWeek(dayOfWeek);
                 calendarPageGraphics.DrawString(
-                                                DateTimeFormatInfo.InvariantInfo.GetAbbreviatedDayName(dayOfWeek),
+                                                culture.GetAbbreviatedDayName(dayOfWeek),
                                                 TextFont,
                                                 TextBrush,
-                                                StartX + offset * CellWidth,
+                                                StartX + horizontalOffset * CellWidth,
                                                 StartY);
             }
         }
 
-        private static void DrawDays(IEnumerable<CalendarPageDay> days, Graphics calendarPageGraphics)
+        private static void DrawDays(IEnumerable<CalendarPageDay> days, Culture culture, Graphics calendarPageGraphics)
         {
             var verticalOffset = 1;
             foreach (var day in days)
             {
-                DrawDay(day, verticalOffset, calendarPageGraphics);
-                if (day.DayOfWeek == GetLastDayOfWeek())
+                var horizontalOffset = culture.GetOffsetDayOfWeek(day.DayOfWeek);
+                DrawDay(day, verticalOffset, horizontalOffset, calendarPageGraphics);
+                if (day.DayOfWeek == culture.GetLastDayOfWeek())
                     verticalOffset++;
             }
         }
 
-        private static void DrawDay(CalendarPageDay day, int verticalOffset, Graphics calendarPageGraphics)
+        private static void DrawDay(CalendarPageDay day, int verticalOffset, int horizontalOffset, Graphics calendarPageGraphics)
         {
-            var horizontalOffset = GetOffsetDayOfWeek(day.DayOfWeek);
-
             if (day.IsSelected)
                 calendarPageGraphics.FillEllipse(new SolidBrush(SelectionColor),
                                             StartX + horizontalOffset * CellWidth,
@@ -111,34 +122,11 @@ namespace Calendar_v3_.CalendarPagePainterUtils
                                             SelectionHeight
                                           );
 
-            calendarPageGraphics.DrawString(day.Number.ToString(CultureInfo.InvariantCulture),
+            calendarPageGraphics.DrawString(day.Number+"",
                             DayFont,
                             new SolidBrush(GetColorDayOfWeek(day)),
                             StartX + horizontalOffset * CellWidth,
                             StartY + verticalOffset * CellHeight);
-        }
-
-        private static DayOfWeek GetFirstDayOfWeek()
-        {
-            return DateTimeFormatInfo.CurrentInfo != null
-                ? DateTimeFormatInfo.CurrentInfo.FirstDayOfWeek
-                : DateTimeFormatInfo.InvariantInfo.FirstDayOfWeek;
-        }
-
-        private static DayOfWeek GetLastDayOfWeek()
-        {
-            return (DayOfWeek) (((int) GetFirstDayOfWeek() + 6)%7);
-        }
-
-        private static int GetOffsetDayOfWeek(DayOfWeek dayOfWeek)
-        {
-            var offset = 0;
-            for (var day = GetFirstDayOfWeek(); day != dayOfWeek; day = (DayOfWeek) (((int) (day) + 1)%7))
-            {
-                offset++;
-            }
-
-            return offset;
         }
 
         private static Color GetColorDayOfWeek(CalendarPageDay day)

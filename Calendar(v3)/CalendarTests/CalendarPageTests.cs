@@ -128,6 +128,7 @@ namespace CalendarTests
                 new CalendarPageDay(27, DayOfWeek.Friday, false),
                 new CalendarPageDay(28, DayOfWeek.Saturday, false)
             };
+
             Assert.That(calendarPage.Year, Is.EqualTo(2015));
             Assert.That(calendarPage.Month, Is.EqualTo(2));
             Assert.That(calendarPage.Days, Is.EqualTo(expectedDays));
